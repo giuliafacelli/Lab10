@@ -29,6 +29,7 @@ class DAO:
 
         except Exception:
             print("Errore nell'esecuzione della query.")
+            return None
 
 
     @staticmethod
@@ -51,6 +52,7 @@ class DAO:
 
         except Exception:
             print("Errore nell'esecuzione della query.")
+            return None
 
 
 
@@ -75,6 +77,7 @@ class DAO:
 
         except Exception:
             print("Errore nell'esecuzione della query.")
+            return None
 
 
     @staticmethod
@@ -86,9 +89,9 @@ class DAO:
                 SELECT
                         LEAST(id_hub_origine, id_hub_destinazione) AS h1,
                         GREATEST(id_hub_origine, id_hub_destinazione) AS h2,
+                        SUM(valore_merce) AS valore_totale,
+                        COUNT(*) AS numero_spedizioni
                 FROM spedizione
-                SUM(valore_merce) AS valore_totale
-                COUNT(*) AS numero_spedizioni
                 GROUP BY h1, h2
                 """
         try:
@@ -102,6 +105,7 @@ class DAO:
 
         except Exception:
             print("Errore nell'esecuzione della query.")
+            return None
 
 
 
